@@ -2,6 +2,7 @@ from setuptools import setup
 
 def build_native(spec):
     # build an example rust library
+   
     build = spec.add_external_build(
         cmd=['cargo', 'build', '--release'],
         path='./rust_test2'
@@ -10,7 +11,7 @@ def build_native(spec):
     spec.add_cffi_module(
         module_path='example._native',
         dylib=lambda: build.find_dylib('rust_test', in_path='target/release'),
-        header_filename=lambda: build.find_header('rust_test.h', in_path='target'),
+        header_filename=lambda: build.find_header('rust_test.h', in_path='./'),
         rtld_flags=['NOW', 'NODELETE']
     )
 
