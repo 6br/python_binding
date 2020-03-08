@@ -4,7 +4,7 @@ def build_native(spec):
     # build an example rust library
    
     build = spec.add_external_build(
-        cmd=['cargo', 'build', '--release'],
+        cmd=['bash', '-x', 'cargo.sh'],
         path='./rust_test2'
     )
 
