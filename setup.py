@@ -1,10 +1,11 @@
 from setuptools import setup
+import sysconfig
 
 def build_native(spec):
     # build an example rust library
    
     build = spec.add_external_build(
-        cmd=['bash', '-x', 'cargo.sh'],
+        cmd=['bash', '-x', 'cargo.sh', sysconfig.get_config_vars("CC"), sysconfig.get_config_vars("CCSHARED")],
         path='./rust_test2'
     )
 
