@@ -5,7 +5,7 @@ def build_native(spec):
     # build an example rust library
    
     build = spec.add_external_build(
-        cmd=['bash', '-x', 'cargo.sh', sysconfig.get_config_vars("CC"), sysconfig.get_config_vars("CCSHARED")],
+        cmd=['bash', '-x', 'cargo.sh', sysconfig.get_config_var("CC"), sysconfig.get_config_var("PY_CFLAGS"), sysconfig.get_config_var("CCSHARED")],
         path='./rust_test2'
     )
 
